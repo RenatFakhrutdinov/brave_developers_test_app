@@ -21,6 +21,13 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomSheet: Container(
+        height: 50,
+        color: Colors.red,
+        child: Center(
+          child: Text('footer'),
+        ),
+      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth < 600) {
