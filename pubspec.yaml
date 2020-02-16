@@ -19,5 +19,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  fonts:
+    - family: OldStandart
+      fonts:
+        - asset: web/assets/font/OldStandardTT-Regular.ttf
+
   assets:
    - assets/
