@@ -30,7 +30,7 @@ class Footer extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Icon(
-                        CupertinoIcons.mail,
+                        Icons.mail,
                         size: 32,
                       ),
                       SizedBox(width: 8),
