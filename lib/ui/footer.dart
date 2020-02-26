@@ -26,7 +26,7 @@ class Footer extends StatelessWidget {
                         children: <Widget>[
                           Image.network('assets/github.png'),
                           SizedBox(width: 8),
-                          SelectableText("My Github")
+                          SelectableText(Strings.myGitHub)
                         ],
                       ),
                     ),
@@ -41,8 +41,10 @@ class Footer extends StatelessWidget {
                             onTap: () {
                               sendEmail();
                             },
-                            child:
-                                Text('renat.fakhrutdinov@bravedevelopers.com'))
+                            child: Text(
+                              Strings.mailOfAuthor,
+                              style: TextStyle(color: Colors.blue),
+                            ))
                       ],
                     ),
                   ],
