@@ -10,7 +10,7 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      return Center(child: Text(Strings.title));
+      return Center(child: SelectableText(Strings.title));
     });
   }
 }

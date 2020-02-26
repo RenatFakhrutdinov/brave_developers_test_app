@@ -1,3 +1,4 @@
+import 'package:brave_developers_test_app/helpers/email_sender.dart';
 import 'package:brave_developers_test_app/res/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,14 +19,14 @@ class Footer extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text("Contacts"),
+                    SelectableText("Contacts"),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 24),
                       child: Row(
                         children: <Widget>[
                           Image.network('assets/github.png'),
                           SizedBox(width: 8),
-                          Text("My Github")
+                          SelectableText("My Github")
                         ],
                       ),
                     ),
@@ -37,7 +38,9 @@ class Footer extends StatelessWidget {
                         ),
                         SizedBox(width: 8),
                         InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              sendEmail();
+                            },
                             child:
                                 Text('renat.fakhrutdinov@bravedevelopers.com'))
                       ],
@@ -50,7 +53,7 @@ class Footer extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          Text(Strings.title),
+                          SelectableText(Strings.title),
                         ],
                       ),
                     )
