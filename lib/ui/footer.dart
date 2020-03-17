@@ -9,7 +9,7 @@ class Footer extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       print('${constraints.constrainWidth()}');
       return Container(
-        height: 180,
+        height: 200,
         child: Padding(
           padding: EdgeInsets.all(24.0),
           child: Row(
@@ -19,7 +19,10 @@ class Footer extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    SelectableText("Contacts"),
+                    SelectableText(
+                      Strings.contacts,
+                      style: TextStyle(fontSize: 20),
+                    ),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 24),
                       child: Row(
@@ -55,9 +58,15 @@ class Footer extends StatelessWidget {
               constraints.constrainWidth() > 650
                   ? Expanded(
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          SelectableText(Strings.title),
+                          SelectableText(
+                            Strings.title,
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          Padding(
+                              padding: EdgeInsets.only(top: 24),
+                              child: SelectableText(Strings.footerMessage))
                         ],
                       ),
                     )
