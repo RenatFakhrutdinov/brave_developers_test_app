@@ -8,3 +8,11 @@ void sendEmail() async {
     throw 'Could not launch ${Strings.mailUrl}';
   }
 }
+
+void openGithub() async {
+  if (await canLaunch(Strings.gitHubUrl)) {
+    await launch(Strings.gitHubUrl);
+  } else {
+    throw 'Could not launch ${Strings.gitHubUrl}';
+  }
+}

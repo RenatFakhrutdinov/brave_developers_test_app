@@ -1,4 +1,4 @@
-import 'package:brave_developers_test_app/helpers/email_sender.dart';
+import 'package:brave_developers_test_app/helpers/url_helper.dart';
 import 'package:brave_developers_test_app/res/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +26,9 @@ class Footer extends StatelessWidget {
                         children: <Widget>[
                           Image.network('assets/github.png'),
                           SizedBox(width: 8),
-                          SelectableText(Strings.myGitHub)
+                          InkWell(
+                              onTap: () => openGithub(),
+                              child: Text(Strings.myGitHub))
                         ],
                       ),
                     ),
