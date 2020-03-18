@@ -1,4 +1,3 @@
-import 'package:brave_developers_test_app/ui/footer.dart';
 import 'package:flutter/material.dart';
 
 import 'body.dart';
@@ -20,7 +19,6 @@ class _MainPageState extends State<MainPage> {
           textTheme:
               TextTheme(bodyText2: TextStyle(fontFamily: "OldStandart"))),
       home: Scaffold(
-        bottomSheet: Footer(),
         body: Body(),
       ),
     );
