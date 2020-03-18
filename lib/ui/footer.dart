@@ -9,7 +9,7 @@ class Footer extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       print('${constraints.constrainWidth()}');
       return Container(
-        height: 200,
+        height: constraints.constrainWidth() > 650 ? 200 : 270,
         child: Padding(
           padding: EdgeInsets.all(24.0),
           child: Row(
@@ -52,6 +52,9 @@ class Footer extends StatelessWidget {
                             ))
                       ],
                     ),
+                    constraints.constrainWidth() > 650
+                        ? SizedBox.shrink()
+                        : _footerMessage()
                   ],
                 ),
               ),
@@ -64,9 +67,7 @@ class Footer extends StatelessWidget {
                             Strings.title,
                             style: TextStyle(fontSize: 20),
                           ),
-                          Padding(
-                              padding: EdgeInsets.only(top: 24),
-                              child: SelectableText(Strings.footerMessage))
+                          _footerMessage(),
                         ],
                       ),
                     )
@@ -76,5 +77,11 @@ class Footer extends StatelessWidget {
         ),
       );
     });
+  }
+
+  Widget _footerMessage() {
+    return Padding(
+        padding: EdgeInsets.only(top: 24),
+        child: SelectableText(Strings.footerMessage));
   }
 }
