@@ -11,10 +11,13 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      return ListView(
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(Strings.title),
-          Footer(constraints: constraints)
+          constraints.constrainHeight() > 500
+              ? Footer(constraints: constraints)
+              : SizedBox.shrink()
         ],
       );
     });
