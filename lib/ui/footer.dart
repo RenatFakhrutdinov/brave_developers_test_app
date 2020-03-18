@@ -11,7 +11,8 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: constraints.constrainWidth() > 650 ? 200 : 270,
+      height: constraints.constrainWidth() > 650 ? 190 : 260,
+      color: Colors.grey[400],
       child: Padding(
         padding: EdgeInsets.all(24.0),
         child: Row(
