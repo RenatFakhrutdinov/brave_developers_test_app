@@ -30,7 +30,7 @@ class Footer extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: 24),
                     child: Row(
                       children: <Widget>[
-                        Image.network('assets/github.png'),
+                        Image.network('assets/logos/github.png'),
                         SizedBox(width: 8),
                         InkWell(
                             onTap: () => openGithub(),
