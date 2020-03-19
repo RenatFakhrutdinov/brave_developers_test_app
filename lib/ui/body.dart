@@ -15,7 +15,7 @@ class _BodyState extends State<Body> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(Strings.title),
-          constraints.constrainHeight() > 500
+          constraints.constrainHeight() > 700
               ? Footer(constraints: constraints)
               : SizedBox.shrink()
         ],
