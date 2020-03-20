@@ -10,9 +10,23 @@ class OperatorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return Container(
+      margin: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 2,
+              offset: Offset(
+                4.0,
+                2.0,
+              ),
+            )
+          ]),
       child: FlatButton(
+        color: Colors.white,
+        hoverColor: Colors.red,
         onPressed: () {
           Navigator.push(
             context,
@@ -26,19 +40,10 @@ class OperatorCard extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
           decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  blurRadius: 2,
-                  offset: Offset(
-                    4.0, // horizontal, move right 10
-                    2.0, // vertical, move down 10
-                  ),
-                )
-              ]),
+            shape: BoxShape.rectangle,
+            //color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+          ),
           height: 188,
           width: 136,
           child: Column(
