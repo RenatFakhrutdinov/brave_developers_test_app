@@ -6,6 +6,7 @@ class ButtonsWrap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
+      alignment: WrapAlignment.center,
       children: <Widget>[
         OperatorCard(
           pictUrl: 'assets/logos/mts.png',

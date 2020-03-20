@@ -13,12 +13,14 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
+      print('___ ${constraints.constrainHeight()}');
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Expanded(
-            child: constraints.constrainWidth() > 1210
+            child: constraints.constrainWidth() > 1210 &&
+                    constraints.constrainHeight() > 360
                 ? _wideScreen()
                 : _narrowScreen(),
           ),
@@ -31,12 +33,10 @@ class _BodyState extends State<Body> {
   }
 
   Widget _narrowScreen() {
-
-    ///todo align center
     return ListView(
       children: <Widget>[
         LogoTitle(),
-        ButtonsWrap(),
+        Center(child: ButtonsWrap()),
       ],
     );
   }
@@ -47,7 +47,7 @@ class _BodyState extends State<Body> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         LogoTitle(),
-        ButtonsWrap(),
+        Center(child: ButtonsWrap()),
         Padding(
           padding: EdgeInsets.only(bottom: 8),
           child: SelectableText(Strings.chooseOperator),
