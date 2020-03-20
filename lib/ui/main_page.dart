@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'body.dart';
+import 'ui_screens/body.dart';
 
 class MainPage extends StatefulWidget {
   @override
