@@ -16,4 +16,6 @@ class Strings {
   static const String rostelecom = "Ростелеком";
   static const String tinkoff = "Тинькофф Мобайл";
   static const String sberbank = "СберМобайл";
+  static const String chooseOperator =
+      "Выбери своего оператора и пополни баланс";
 }
