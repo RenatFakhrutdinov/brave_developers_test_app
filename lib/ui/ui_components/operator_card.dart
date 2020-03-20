@@ -1,3 +1,4 @@
+import 'package:brave_developers_test_app/ui/ui_screens/pay_form.dart';
 import 'package:flutter/material.dart';
 
 class OperatorCard extends StatelessWidget {
@@ -12,8 +13,13 @@ class OperatorCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: FlatButton(
-        onPressed: () {},
-        shape: new RoundedRectangleBorder(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PayForm()),
+          );
+        },
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
         padding: EdgeInsets.all(0),

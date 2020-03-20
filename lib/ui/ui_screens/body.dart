@@ -13,7 +13,6 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      print('___ ${constraints.constrainHeight()}');
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
