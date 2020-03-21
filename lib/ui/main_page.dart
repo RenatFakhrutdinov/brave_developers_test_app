@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'ui_screens/body.dart';
+import 'ui_screens/pay_form.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -18,9 +19,8 @@ class _MainPageState extends State<MainPage> {
           ),
           textTheme:
               TextTheme(bodyText2: TextStyle(fontFamily: "OldStandart"))),
-      home: Scaffold(
-        body: Body(),
-      ),
+      home: Scaffold(body: PayForm() //Body(),
+          ),
     );
   }
 }
