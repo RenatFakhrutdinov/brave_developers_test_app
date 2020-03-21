@@ -1,3 +1,4 @@
+import 'package:brave_developers_test_app/res/strings.dart';
 import 'package:brave_developers_test_app/ui/ui_components/logo_title.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -10,7 +11,7 @@ class PayForm extends StatefulWidget {
 class _PayFormState extends State<PayForm> {
   TextEditingController _phoneController = TextEditingController();
   MaskTextInputFormatter _phoneMask = MaskTextInputFormatter(
-      mask: '+7 ( ### ) ###-##-##', filter: {"#": RegExp(r'[0-9]')});
+      mask: '(###) ###-##-##', filter: {"#": RegExp(r'[0-9]')});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,15 @@ class _PayFormState extends State<PayForm> {
           TextField(
             controller: _phoneController,
             inputFormatters: [_phoneMask],
-          )
+            decoration: InputDecoration(
+                prefix: Text(
+                  '+7',
+                  style: TextStyle(color: Colors.black),
+                ),
+                hintText: Strings.putYourNumber,
+                border: OutlineInputBorder()),
+            style: TextStyle(fontFamily: "OldStandart"),
+          ),
         ],
       ),
     );

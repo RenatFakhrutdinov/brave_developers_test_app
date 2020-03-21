@@ -18,4 +18,5 @@ class Strings {
   static const String sberbank = "СберМобайл";
   static const String chooseOperator =
       "Выбери своего оператора и пополни баланс";
+  static const String putYourNumber = " Введите Ваш номер телефона";
 }
