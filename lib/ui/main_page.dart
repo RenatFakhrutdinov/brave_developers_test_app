@@ -17,6 +17,7 @@ class _MainPageState extends State<MainPage> {
           bottomSheetTheme: BottomSheetThemeData(
             backgroundColor: Colors.blue.withOpacity(0.05),
           ),
+          hoverColor: Colors.red,
           textTheme:
               TextTheme(bodyText2: TextStyle(fontFamily: "OldStandart"))),
       home: Scaffold(body: PayForm() //Body(),

@@ -26,7 +26,6 @@ class OperatorCard extends StatelessWidget {
           ]),
       child: FlatButton(
         color: Colors.white,
-        hoverColor: Colors.red,
         onPressed: () {
           Navigator.push(
             context,
