@@ -1,6 +1,9 @@
+import 'package:brave_developers_test_app/helpers/wait_payment_bloc.dart';
 import 'package:brave_developers_test_app/res/strings.dart';
 import 'package:brave_developers_test_app/ui/ui_components/logo_title.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class PayForm extends StatefulWidget {
@@ -9,6 +12,8 @@ class PayForm extends StatefulWidget {
 }
 
 class _PayFormState extends State<PayForm> {
+  WaitPaymentBloc _waitPaymentBloc = WaitPaymentBloc();
+
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _sumController = TextEditingController();
   MaskTextInputFormatter _phoneMask = MaskTextInputFormatter(
@@ -24,7 +29,14 @@ class _PayFormState extends State<PayForm> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           LogoTitle(),
-          _phoneForm(),
+          BlocBuilder(
+              bloc: _waitPaymentBloc,
+              builder: (context, state) {
+                if (state == true) {
+                  return CupertinoActivityIndicator();
+                } else
+                  return _phoneForm();
+              }),
           SizedBox(
             width: MediaQuery.of(context).size.width,
           )
@@ -95,7 +107,7 @@ class _PayFormState extends State<PayForm> {
             height: 16,
           ),
           RaisedButton(
-            onPressed: () => print('dsd'),
+            onPressed: () => _dispatchWaitPaymentBloc(),
             child: Container(
                 width: MediaQuery.of(context).size.width,
                 child: Text(
@@ -106,5 +118,9 @@ class _PayFormState extends State<PayForm> {
         ],
       ),
     );
+  }
+
+  void _dispatchWaitPaymentBloc() {
+    _waitPaymentBloc.add(WaitPaymentEvent.pay);
   }
 }
