@@ -10,8 +10,11 @@ class PayForm extends StatefulWidget {
 
 class _PayFormState extends State<PayForm> {
   TextEditingController _phoneController = TextEditingController();
+  TextEditingController _sumController = TextEditingController();
   MaskTextInputFormatter _phoneMask = MaskTextInputFormatter(
       mask: '(###) ###-##-##', filter: {"#": RegExp(r'[0-9]')});
+  MaskTextInputFormatter _sumMask =
+      MaskTextInputFormatter(mask: '#####', filter: {"#": RegExp(r'[0-9]')});
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +35,9 @@ class _PayFormState extends State<PayForm> {
 
   Widget _phoneForm() {
     return Container(
-      height: 200,
-      width: 400,
-      padding: EdgeInsets.all(8),
+      height: 400,
+      width: 330,
+      padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(8)),
           color: Colors.white,
@@ -50,6 +53,21 @@ class _PayFormState extends State<PayForm> {
           ]),
       child: Column(
         children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.network("assets/logos/mts.png"),
+              SizedBox(width: 16),
+              Text(
+                Strings.tinkoff,
+                style: TextStyle(fontSize: 20),
+              )
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 16, bottom: 8),
+            child: Text(Strings.phoneNumber),
+          ),
           TextField(
             controller: _phoneController,
             inputFormatters: [_phoneMask],
@@ -62,6 +80,29 @@ class _PayFormState extends State<PayForm> {
                 border: OutlineInputBorder()),
             style: TextStyle(fontFamily: "OldStandart"),
           ),
+          Padding(
+            padding: EdgeInsets.only(top: 16, bottom: 8),
+            child: Text(Strings.sum),
+          ),
+          TextField(
+            controller: _sumController,
+            inputFormatters: [_sumMask],
+            decoration: InputDecoration(
+                hintText: Strings.sumHintMessage, border: OutlineInputBorder()),
+            style: TextStyle(fontFamily: "OldStandart"),
+          ),
+          SizedBox(
+            height: 16,
+          ),
+          RaisedButton(
+            onPressed: () => print('dsd'),
+            child: Container(
+                width: MediaQuery.of(context).size.width,
+                child: Text(
+                  Strings.pay,
+                  textAlign: TextAlign.center,
+                )),
+          )
         ],
       ),
     );

@@ -19,4 +19,8 @@ class Strings {
   static const String chooseOperator =
       "Выбери своего оператора и пополни баланс";
   static const String putYourNumber = " Введите Ваш номер телефона";
+  static const String phoneNumber = "Номер телефона";
+  static const String sum = "Сумма";
+  static const String sumHintMessage = "Максимум 15000 ₽ с учетом комиссии";
+  static const String pay = "Оплатить";
 }
