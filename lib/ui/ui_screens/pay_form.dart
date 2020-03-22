@@ -21,6 +21,26 @@ class _PayFormState extends State<PayForm> {
   MaskTextInputFormatter _sumMask =
       MaskTextInputFormatter(mask: '#####', filter: {"#": RegExp(r'[0-9]')});
 
+  String _errorPhone;
+  String _sumError;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _phoneController.addListener(() {
+      setState(() {
+        _errorPhone = null;
+      });
+    });
+
+    _sumController.addListener(() {
+      setState(() {
+        _sumError = null;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +67,7 @@ class _PayFormState extends State<PayForm> {
 
   Widget _phoneForm() {
     return Container(
-      height: 400,
+      height: 444,
       width: 330,
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -64,6 +84,7 @@ class _PayFormState extends State<PayForm> {
             )
           ]),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -89,7 +110,8 @@ class _PayFormState extends State<PayForm> {
                   style: TextStyle(color: Colors.black),
                 ),
                 hintText: Strings.putYourNumber,
-                border: OutlineInputBorder()),
+                border: OutlineInputBorder(),
+                errorText: _errorPhone),
             style: TextStyle(fontFamily: "OldStandart"),
           ),
           Padding(
@@ -100,7 +122,9 @@ class _PayFormState extends State<PayForm> {
             controller: _sumController,
             inputFormatters: [_sumMask],
             decoration: InputDecoration(
-                hintText: Strings.sumHintMessage, border: OutlineInputBorder()),
+                hintText: Strings.sumHintMessage,
+                border: OutlineInputBorder(),
+                errorText: _sumError),
             style: TextStyle(fontFamily: "OldStandart"),
           ),
           SizedBox(
@@ -121,6 +145,28 @@ class _PayFormState extends State<PayForm> {
   }
 
   void _dispatchWaitPaymentBloc() {
-    _waitPaymentBloc.add(WaitPaymentEvent.pay);
+    if (_phoneController.text.length < 15) {
+      setState(() {
+        _errorPhone = Strings.phoneErrorText;
+      });
+    }
+    if (_sumController.text.isEmpty) {
+      setState(() {
+        _sumError = Strings.emptyPay;
+      });
+    }
+    if (_sumController.text.isNotEmpty) {
+      if (int.parse(_sumController.text) > 15000) {
+        setState(() {
+          _sumError = Strings.payErrorText;
+        });
+      }
+      if (int.parse(_sumController.text) < 1) {
+        setState(() {
+          _sumError = Strings.emptyPay;
+        });
+      }
+    } else
+      _waitPaymentBloc.add(WaitPaymentEvent.pay);
   }
 }

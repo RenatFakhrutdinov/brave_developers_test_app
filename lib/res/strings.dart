@@ -20,7 +20,10 @@ class Strings {
       "Выбери своего оператора и пополни баланс";
   static const String putYourNumber = " Введите Ваш номер телефона";
   static const String phoneNumber = "Номер телефона";
-  static const String sum = "Сумма";
+  static const String phoneErrorText = "Неверно указан номер";
+  static const String sum = "Сумма в рублях";
   static const String sumHintMessage = "Максимум 15000 ₽ с учетом комиссии";
   static const String pay = "Оплатить";
+  static const String payErrorText = "Слишком большая сумма";
+  static const String emptyPay = "Это поле не должно быть пустым";
 }
