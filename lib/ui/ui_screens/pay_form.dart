@@ -52,7 +52,7 @@ class _PayFormState extends State<PayForm> {
           BlocBuilder(
               bloc: _waitPaymentBloc,
               builder: (context, state) {
-                if (state == true) {
+                if (state is WaitPaymentWait) {
                   return CupertinoActivityIndicator();
                 } else
                   return _phoneForm();
