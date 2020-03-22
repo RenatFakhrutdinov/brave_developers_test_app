@@ -166,7 +166,12 @@ class _PayFormState extends State<PayForm> {
           _sumError = Strings.emptyPay;
         });
       }
-    } else
+    }
+    if (_phoneController.text.length == 15 &&
+        _sumController.text.isNotEmpty &&
+        int.parse(_sumController.text) > 0 &&
+        int.parse(_sumController.text) <= 15000) {
       _waitPaymentBloc.add(WaitPaymentEvent.pay);
+    }
   }
 }
