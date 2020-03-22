@@ -26,4 +26,7 @@ class Strings {
   static const String pay = "Оплатить";
   static const String payErrorText = "Слишком большая сумма";
   static const String emptyPay = "Это поле не должно быть пустым";
+  static const String payDone = "Платёж успешно выполнен";
+  static const String payFailed = "Что-то пошло не так\nПопробуйте ещё раз";
+  static const String continueString = "Продолжить";
 }

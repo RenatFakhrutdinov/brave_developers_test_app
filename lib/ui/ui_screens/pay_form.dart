@@ -1,6 +1,7 @@
 import 'package:brave_developers_test_app/helpers/wait_payment_bloc.dart';
 import 'package:brave_developers_test_app/res/strings.dart';
 import 'package:brave_developers_test_app/ui/ui_components/logo_title.dart';
+import 'package:brave_developers_test_app/ui/ui_components/pay_result.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,6 +55,14 @@ class _PayFormState extends State<PayForm> {
               builder: (context, state) {
                 if (state is WaitPaymentWait) {
                   return CupertinoActivityIndicator();
+                } else if (state is WaitPaymentDone) {
+                  return PayResult(
+                      urlPict: 'assets/picts/tick.png',
+                      resultString: Strings.payDone);
+                } else if (state is WaitPaymentError) {
+                  return PayResult(
+                      urlPict: 'assets/picts/close.png',
+                      resultString: Strings.payFailed);
                 } else
                   return _phoneForm();
               }),
