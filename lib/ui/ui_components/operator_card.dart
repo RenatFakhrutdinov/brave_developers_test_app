@@ -29,7 +29,12 @@ class OperatorCard extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => PayForm()),
+            MaterialPageRoute(
+              builder: (context) => PayForm(
+                pictUrl: pictUrl,
+                operatorName: operatorName,
+              ),
+            ),
           );
         },
         shape: RoundedRectangleBorder(

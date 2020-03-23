@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'ui_screens/body.dart';
-import 'ui_screens/pay_form.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -20,8 +19,9 @@ class _MainPageState extends State<MainPage> {
           hoverColor: Colors.red,
           textTheme:
               TextTheme(bodyText2: TextStyle(fontFamily: "OldStandart"))),
-      home: Scaffold(body: PayForm() //Body(),
-          ),
+      home: Scaffold(
+        body: Body(),
+      ),
     );
   }
 }

@@ -8,6 +8,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class PayForm extends StatefulWidget {
+  final String pictUrl;
+  final String operatorName;
+
+  const PayForm({Key key, this.pictUrl, this.operatorName}) : super(key: key);
+
   @override
   _PayFormState createState() => _PayFormState();
 }
@@ -119,10 +124,13 @@ class _PayFormState extends State<PayForm> {
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Image.network("assets/logos/mts.png"),
+                    Container(
+                        height: 100,
+                        width: 100,
+                        child: Image.network(widget.pictUrl)),
                     SizedBox(width: 16),
                     Text(
-                      Strings.tinkoff,
+                      widget.operatorName,
                       style: TextStyle(fontSize: 20),
                     )
                   ],
