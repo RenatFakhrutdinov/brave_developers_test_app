@@ -45,46 +45,59 @@ class _PayFormState extends State<PayForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          LogoTitle(),
-          BlocBuilder(
-              bloc: _waitPaymentBloc,
-              builder: (context, state) {
-                if (state is WaitPaymentWait) {
-                  return CupertinoActivityIndicator();
-                } else if (state is WaitPaymentDone) {
-                  return PayResult(
-                    urlPict: 'assets/picts/tick.png',
-                    resultString: Strings.payDone,
-                    action: () {
-                      print('+++');
-                    },
-                  );
-                } else if (state is WaitPaymentError) {
-                  return PayResult(
-                    urlPict: 'assets/picts/close.png',
-                    resultString: Strings.payFailed,
-                    action: () {
-                      _waitPaymentBloc.add(WaitPaymentEvent.tryAgain);
-                    },
-                  );
-                } else
-                  return _phoneForm();
-              }),
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-          )
-        ],
-      ),
+      body: LayoutBuilder(builder: (context, constraints) {
+        print('+++ ${constraints.constrainHeight()}');
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            constraints.constrainHeight() > 630
+                ? LogoTitle()
+                : SizedBox.shrink(),
+            BlocBuilder(
+                bloc: _waitPaymentBloc,
+                builder: (context, state) {
+                  if (state is WaitPaymentWait) {
+                    return CupertinoActivityIndicator();
+                  } else if (state is WaitPaymentDone) {
+                    return PayResult(
+                      urlPict: 'assets/picts/tick.png',
+                      resultString: Strings.payDone,
+                      action: () {
+                        print('+++');
+                      },
+                    );
+                  } else if (state is WaitPaymentError) {
+                    return PayResult(
+                      urlPict: 'assets/picts/close.png',
+                      resultString: Strings.payFailed,
+                      action: () {
+                        _waitPaymentBloc.add(WaitPaymentEvent.tryAgain);
+                      },
+                    );
+                  } else
+                    return _phoneForm(constraints.constrainHeight());
+                }),
+            constraints.constrainHeight() > 630
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: SelectableText(
+                      Strings.footerMessage,
+                      textAlign: TextAlign.center,
+                    ),
+                  )
+                : SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                  )
+          ],
+        );
+      }),
     );
   }
 
-  Widget _phoneForm() {
+  Widget _phoneForm(double height) {
     return Container(
-      height: 444,
+      height: height > 450 ? 444 : 295,
       width: 330,
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -103,21 +116,25 @@ class _PayFormState extends State<PayForm> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.network("assets/logos/mts.png"),
-              SizedBox(width: 16),
-              Text(
-                Strings.tinkoff,
-                style: TextStyle(fontSize: 20),
-              )
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 16, bottom: 8),
-            child: Text(Strings.phoneNumber),
-          ),
+          height > 450
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.network("assets/logos/mts.png"),
+                    SizedBox(width: 16),
+                    Text(
+                      Strings.tinkoff,
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ],
+                )
+              : SizedBox.shrink(),
+          height > 450
+              ? Padding(
+                  padding: EdgeInsets.only(top: 16, bottom: 8),
+                  child: Text(Strings.phoneNumber),
+                )
+              : SizedBox.shrink(),
           TextField(
             controller: _phoneController,
             inputFormatters: [_phoneMask],
@@ -131,10 +148,12 @@ class _PayFormState extends State<PayForm> {
                 errorText: _errorPhone),
             style: TextStyle(fontFamily: "OldStandart"),
           ),
-          Padding(
-            padding: EdgeInsets.only(top: 16, bottom: 8),
-            child: Text(Strings.sum),
-          ),
+          height > 450
+              ? Padding(
+                  padding: EdgeInsets.only(top: 16, bottom: 8),
+                  child: Text(Strings.sum),
+                )
+              : SizedBox.shrink(),
           TextField(
             controller: _sumController,
             inputFormatters: [_sumMask],
