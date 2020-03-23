@@ -68,7 +68,9 @@ class _PayFormState extends State<PayForm> {
                       urlPict: 'assets/picts/tick.png',
                       resultString: Strings.payDone,
                       heightOfScreen: constraints.constrainHeight(),
-                      action: () {},
+                      action: () {
+                        Navigator.of(context).pop();
+                      },
                     );
                   } else if (state is WaitPaymentError) {
                     return PayResult(
