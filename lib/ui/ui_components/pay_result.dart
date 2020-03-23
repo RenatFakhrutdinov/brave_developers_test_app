@@ -5,14 +5,20 @@ class PayResult extends StatelessWidget {
   final String urlPict;
   final String resultString;
   final Function action;
+  final double heightOfScreen;
 
-  const PayResult({Key key, this.urlPict, this.resultString, this.action})
+  const PayResult(
+      {Key key,
+      this.urlPict,
+      this.resultString,
+      this.action,
+      this.heightOfScreen})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 444,
+      height: heightOfScreen > 450 ? 444 : 295,
       width: 330,
       padding: EdgeInsets.fromLTRB(16, 40, 16, 16),
       decoration: BoxDecoration(

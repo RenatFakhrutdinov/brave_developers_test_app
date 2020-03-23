@@ -46,7 +46,6 @@ class _PayFormState extends State<PayForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: LayoutBuilder(builder: (context, constraints) {
-        print('+++ ${constraints.constrainHeight()}');
         return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -63,14 +62,14 @@ class _PayFormState extends State<PayForm> {
                     return PayResult(
                       urlPict: 'assets/picts/tick.png',
                       resultString: Strings.payDone,
-                      action: () {
-                        print('+++');
-                      },
+                      heightOfScreen: constraints.constrainHeight(),
+                      action: () {},
                     );
                   } else if (state is WaitPaymentError) {
                     return PayResult(
                       urlPict: 'assets/picts/close.png',
                       resultString: Strings.payFailed,
+                      heightOfScreen: constraints.constrainHeight(),
                       action: () {
                         _waitPaymentBloc.add(WaitPaymentEvent.tryAgain);
                       },
@@ -95,9 +94,9 @@ class _PayFormState extends State<PayForm> {
     );
   }
 
-  Widget _phoneForm(double height) {
+  Widget _phoneForm(double heightOfScreen) {
     return Container(
-      height: height > 450 ? 444 : 295,
+      height: heightOfScreen > 450 ? 444 : 295,
       width: 330,
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -116,7 +115,7 @@ class _PayFormState extends State<PayForm> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          height > 450
+          heightOfScreen > 450
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -129,7 +128,7 @@ class _PayFormState extends State<PayForm> {
                   ],
                 )
               : SizedBox.shrink(),
-          height > 450
+          heightOfScreen > 450
               ? Padding(
                   padding: EdgeInsets.only(top: 16, bottom: 8),
                   child: Text(Strings.phoneNumber),
@@ -148,7 +147,7 @@ class _PayFormState extends State<PayForm> {
                 errorText: _errorPhone),
             style: TextStyle(fontFamily: "OldStandart"),
           ),
-          height > 450
+          heightOfScreen > 450
               ? Padding(
                   padding: EdgeInsets.only(top: 16, bottom: 8),
                   child: Text(Strings.sum),
