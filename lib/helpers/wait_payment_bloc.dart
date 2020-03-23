@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-enum WaitPaymentEvent { pay }
+enum WaitPaymentEvent { pay, tryAgain }
 
 class WaitPaymentBloc extends Bloc<WaitPaymentEvent, WaitPaymentState> {
   @override
@@ -11,18 +11,25 @@ class WaitPaymentBloc extends Bloc<WaitPaymentEvent, WaitPaymentState> {
 
   @override
   Stream<WaitPaymentState> mapEventToState(WaitPaymentEvent event) async* {
-    yield WaitPaymentWait();
-    int randomSec = 1 + Random().nextInt(6);
+    switch (event) {
+      case WaitPaymentEvent.pay:
+        yield WaitPaymentWait();
+        int randomSec = 1 + Random().nextInt(6);
 
-    ///wait randomSec seconds
-    await Future.delayed(Duration(seconds: randomSec));
+        ///wait randomSec seconds
+        await Future.delayed(Duration(seconds: randomSec));
 
-    ///the probability coefficient of success is 0.7
-    int randomValue = Random().nextInt(9);
-    if (randomValue < 7) {
-      yield WaitPaymentDone();
-    } else
-      yield WaitPaymentError();
+        ///the probability coefficient of success is 0.7
+        int randomValue = Random().nextInt(9);
+        if (randomValue < 7) {
+          yield WaitPaymentDone();
+        } else
+          yield WaitPaymentError();
+        break;
+      case WaitPaymentEvent.tryAgain:
+        yield WaitPaymentInit();
+        break;
+    }
   }
 }
 

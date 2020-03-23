@@ -57,12 +57,20 @@ class _PayFormState extends State<PayForm> {
                   return CupertinoActivityIndicator();
                 } else if (state is WaitPaymentDone) {
                   return PayResult(
-                      urlPict: 'assets/picts/tick.png',
-                      resultString: Strings.payDone);
+                    urlPict: 'assets/picts/tick.png',
+                    resultString: Strings.payDone,
+                    action: () {
+                      print('+++');
+                    },
+                  );
                 } else if (state is WaitPaymentError) {
                   return PayResult(
-                      urlPict: 'assets/picts/close.png',
-                      resultString: Strings.payFailed);
+                    urlPict: 'assets/picts/close.png',
+                    resultString: Strings.payFailed,
+                    action: () {
+                      _waitPaymentBloc.add(WaitPaymentEvent.tryAgain);
+                    },
+                  );
                 } else
                   return _phoneForm();
               }),
