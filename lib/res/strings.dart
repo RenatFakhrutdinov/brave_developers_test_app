@@ -29,4 +29,5 @@ class Strings {
   static const String payDone = "Платёж успешно выполнен";
   static const String payFailed = "Что-то пошло не так\nПопробуйте ещё раз";
   static const String continueString = "Продолжить";
+  static const String toMainPage = "На главную";
 }

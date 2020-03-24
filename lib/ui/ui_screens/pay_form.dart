@@ -179,14 +179,28 @@ class _PayFormState extends State<PayForm> {
           SizedBox(
             height: 16,
           ),
-          RaisedButton(
-            onPressed: () => _dispatchWaitPaymentBloc(),
-            child: Container(
-                width: MediaQuery.of(context).size.width,
-                child: Text(
-                  Strings.pay,
-                  textAlign: TextAlign.center,
-                )),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: RaisedButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text(
+                    Strings.toMainPage,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              SizedBox(width: 16),
+              Expanded(
+                child: RaisedButton(
+                  onPressed: () => _dispatchWaitPaymentBloc(),
+                  child: Text(
+                    Strings.pay,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ],
           )
         ],
       ),
