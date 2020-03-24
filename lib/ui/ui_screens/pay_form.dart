@@ -38,6 +38,10 @@ class _PayFormState extends State<PayForm> {
       setState(() {
         _errorPhone = null;
       });
+
+      if (_phoneController.text.length > 15) {
+        _phoneController.text = _phoneController.text.substring(0, 15);
+      }
     });
 
     _sumController.addListener(() {
