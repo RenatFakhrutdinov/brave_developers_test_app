@@ -133,9 +133,11 @@ class _PayFormState extends State<PayForm> {
                     Container(
                         height: 100,
                         width: 100,
-                        child: Image.network(widget.pictUrl)),
+                        child: Hero(
+                            tag: widget.pictUrl,
+                            child: Image.network(widget.pictUrl))),
                     SizedBox(width: 16),
-                    Text(
+                    SelectableText(
                       widget.operatorName,
                       style: TextStyle(fontSize: 20),
                     )

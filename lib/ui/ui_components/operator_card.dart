@@ -52,7 +52,10 @@ class OperatorCard extends StatelessWidget {
           width: 136,
           child: Column(
             children: <Widget>[
-              Image.network(pictUrl),
+              Hero(
+                tag: pictUrl,
+                child: Image.network(pictUrl),
+              ),
               SizedBox(height: 16),
               SelectableText(
                 operatorName,
