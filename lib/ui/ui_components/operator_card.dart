@@ -1,3 +1,4 @@
+import 'package:brave_developers_test_app/helpers/custome_route.dart';
 import 'package:brave_developers_test_app/ui/ui_screens/pay_form.dart';
 import 'package:flutter/material.dart';
 
@@ -29,12 +30,11 @@ class OperatorCard extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: (context) => PayForm(
-                pictUrl: pictUrl,
-                operatorName: operatorName,
-              ),
-            ),
+            CustomRoute(
+                builder: (context) => PayForm(
+                      pictUrl: pictUrl,
+                      operatorName: operatorName,
+                    )),
           );
         },
         shape: RoundedRectangleBorder(
