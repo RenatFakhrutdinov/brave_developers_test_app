@@ -91,9 +91,12 @@ class _PayFormState extends State<PayForm> {
             constraints.constrainHeight() > 630
                 ? Padding(
                     padding: const EdgeInsets.only(bottom: 16),
-                    child: SelectableText(
-                      Strings.footerMessage,
-                      textAlign: TextAlign.center,
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: SelectableText(
+                        Strings.footerMessage,
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   )
                 : SizedBox(
