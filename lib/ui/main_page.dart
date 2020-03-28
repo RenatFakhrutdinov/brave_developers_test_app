@@ -18,7 +18,7 @@ class _MainPageState extends State<MainPage> {
           ),
           hoverColor: Colors.red,
           textTheme:
-              TextTheme(bodyText2: TextStyle(fontFamily: "OldStandart"))),
+              TextTheme(bodyText2: TextStyle(fontFamily: "Rubik"))),
       home: Scaffold(
         body: Body(),
       ),

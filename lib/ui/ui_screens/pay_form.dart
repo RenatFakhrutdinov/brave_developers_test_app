@@ -164,7 +164,7 @@ class _PayFormState extends State<PayForm> {
                 hintText: Strings.putYourNumber,
                 border: OutlineInputBorder(),
                 errorText: _errorPhone),
-            style: TextStyle(fontFamily: "OldStandart"),
+            style: TextStyle(fontFamily: "Rubik"),
           ),
           heightOfScreen > 450
               ? Padding(
@@ -179,7 +179,7 @@ class _PayFormState extends State<PayForm> {
                 hintText: Strings.sumHintMessage,
                 border: OutlineInputBorder(),
                 errorText: _sumError),
-            style: TextStyle(fontFamily: "OldStandart"),
+            style: TextStyle(fontFamily: "Rubik"),
           ),
           SizedBox(
             height: 16,

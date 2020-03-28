@@ -1,9 +1,9 @@
 [
   {
-    "family": "OldStandart",
+    "family": "Rubik",
     "fonts": [
       {
-        "asset": "OldStandardTT-Regular.ttf"
+        "asset": "Rubik-Regular.ttf"
       }
     ]
   },
