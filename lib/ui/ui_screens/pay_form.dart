@@ -52,6 +52,13 @@ class _PayFormState extends State<PayForm> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _phoneController.dispose();
+    _sumController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: LayoutBuilder(builder: (context, constraints) {
