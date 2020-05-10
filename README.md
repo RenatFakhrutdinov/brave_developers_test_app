@@ -11,4 +11,4 @@
 - В репозитории должна быть ссылка на демо приложения.
 
 ### Демо приложения
-[Web терминал оплаты "ПопОлнRе4kA"](https://bdtestapp-fa02c.firebaseapp.com)
+[Web терминал оплаты "ПопОлнRе4kA"](https://bravedevwebapp.web.app/)
